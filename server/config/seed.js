@@ -7,6 +7,8 @@
 
 var Thing = require('../api/thing/thing.model');
 var User = require('../api/user/user.model');
+var MenuItem = require('../api/menuItem/menuItem.model.js');
+var Menu = require('../api/menu/menu.model.js');
 
 Thing.find({}).remove(function() {
   Thing.create({
@@ -27,6 +29,42 @@ Thing.find({}).remove(function() {
   },{
     name : 'Deployment Ready',
     info : 'Easily deploy your app to Heroku or Openshift with the heroku and openshift subgenerators'
+  });
+});
+
+MenuItem.find({}).remove(function() {
+  MenuItem.create({
+    itemId: "abcd1234",
+    menuId: "Menu1",
+    name: "Item1",
+    description: "1234",
+    active: true,
+    primaryImage: "http://i.imgur.com/qKHMMc0.jpg",
+    imagery:["http://i.imgur.com/qKHMMc0.jpg"],
+    price: 19.99,
+    ingredients: ["rosemary","tyne","someother shit"],
+    category: "Mexican"
+  },
+  {
+    itemId: "abcd1235",
+    menuId: "Menu1",
+    name: "Item2",
+    description: "1235",
+    active: true,
+    primaryImage: "http://i.imgur.com/qKHMMc0.jpg",
+    imagery:["http://i.imgur.com/qKHMMc0.jpg"],
+    price: 19.98,
+    ingredients: ["rosemary","tyne","someother shit"],
+    category: "Mexican"
+  }
+  );
+});
+
+Menu.find({}).remove(function(){
+  Menu.create({
+    name:"Menu1",
+    active:true,
+    menuItems:["abcd1234"]
   });
 });
 

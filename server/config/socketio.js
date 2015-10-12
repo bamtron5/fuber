@@ -18,6 +18,9 @@ function onConnect(socket) {
   });
 
   // Insert sockets below
+  require('../api/menu/menu.socket').register(socket);
+  require('../api/menuItem/menuItem.socket').register(socket);
+  require('../api/sdp/sdp.socket').register(socket);
   require('../api/thing/thing.socket').register(socket);
 }
 
