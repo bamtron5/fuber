@@ -10,7 +10,7 @@ angular.module('fuberApp')
     });
 
     $http.get('/api/menuItems#' + $scope.menu.name).success(function(menuItems){
-    	console.log(menuItems);
+    	$scope.menuItems = menuItems;
     });
 
   });
