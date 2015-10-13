@@ -13,7 +13,8 @@ exports.index = function(req, res) {
 
 // Get a single menu
 exports.show = function(req, res) {
-  Menu.findById(req.params.id, function (err, menu) {
+  console.log(req.params);
+  Menu.findOne({"userName":req.params.userName}, function (err, menu) {
     if(err) { return handleError(res, err); }
     if(!menu) { return res.status(404).send('Not Found'); }
     return res.json(menu);
@@ -31,7 +32,8 @@ exports.create = function(req, res) {
 // Updates an existing menu in the DB.
 exports.update = function(req, res) {
   if(req.body._id) { delete req.body._id; }
-  Menu.findById(req.params.id, function (err, menu) {
+  console.log(req.params);
+  Menu.findOne({"userName":req.params.id}, function (err, menu) {
     if (err) { return handleError(res, err); }
     if(!menu) { return res.status(404).send('Not Found'); }
     var updated = _.merge(menu, req.body);

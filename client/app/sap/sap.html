@@ -1,13 +1,28 @@
 <div ng-include="'components/navbar/navbar.html'"></div>
 
-<div class="col-md-12">
-	<h1>Hello, {{user.name}}</h1>
-	<form>
-		<div class="col-md-4 col-xs-12">
-			<label>Shop Name</label>
-		</div>
-		<div class="col-md-8 col-xs-12">
-			<input ng-model="shopName">
-		</div>
-	</form>
+<div class="container">
+	<div class="row">
+		<h1>Hello, {{user.name}}</h1>
+		<form id="sapForm">
+
+			<div class="col-md-2 col-xs-12">
+				<label>Shop Name</label>
+			</div>
+			<div class="col-md-10 col-xs-12">
+				<input ng-model="shopName" ng-value="menu.shopName">
+			</div>
+
+			<div class="col-md-2 col-xs-12">
+				<label>Add New Menu Item</label>
+			</div>
+
+			<div class="col-md-2 col-xs-12">
+				<i class="fa fa-plus cursor" ng-click="newMenuItem()"></i>
+			</div>
+
+			<div class="col-xs-12">
+				<button class="btn btn-primary" type="submit" ng-click="postMenu()">Submit</button>
+			</div>
+		</form>
+	</div>
 </div>
