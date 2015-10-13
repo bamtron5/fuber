@@ -1,9 +1,14 @@
 'use strict';
 
 angular.module('fuberApp')
-  .controller('SignupCtrl', function ($scope, Auth, $location) {
+  .controller('SignupCtrl', function ($scope, Auth, $location, $http) {
     $scope.user = {};
     $scope.errors = {};
+    $scope.addMenu = function(username){
+      $http.post('/api/menus', { userName: username });
+      // Account created, redirect to home
+      $location.path('/');
+    };
 
     $scope.register = function(form) {
       $scope.submitted = true;
@@ -15,8 +20,7 @@ angular.module('fuberApp')
           password: $scope.user.password
         })
         .then( function() {
-          // Account created, redirect to home
-          $location.path('/');
+          $scope.addMenu($scope.user.name);
         })
         .catch( function(err) {
           err = err.data;

@@ -6,7 +6,9 @@ var mongoose = require('mongoose'),
 var MenuSchema = new Schema({
   name: String,
   active: Boolean,
-  menuItems: Array
+  menuItems: Array,
+  shopName: String,
+  userName: String
 });
 
 module.exports = mongoose.model('Menu', MenuSchema);

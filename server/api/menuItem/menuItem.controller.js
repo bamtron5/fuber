@@ -13,11 +13,11 @@ exports.index = function(req, res) {
 
 // Get a single menuItem
 exports.show = function(req, res) {
-  MenuItem.find(req.params.id, function(err, menuItem){
+  MenuItem.find({menuId: req.params.id}, function(err, menuItem){
       if(err) { return handleError(res, err); }
       if(!menuItem) { return res.status(404).send('Not Found'); }
       return res.json(menuItem);
-  });
+  }).limit(1);
 };
 
 // Creates a new menuItem in the DB.
